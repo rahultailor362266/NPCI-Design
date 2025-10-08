@@ -11,8 +11,11 @@ import CourseCard from '../../components/CourseCard';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import { FreeMode , Navigation } from "swiper/modules";
+import { useState } from 'react';
 
 const Login = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <>
       <Header />
@@ -21,18 +24,20 @@ const Login = () => {
           <Sidebar />
           <div className="main-content-wrapper">
             <div className="container">
-              <div className="top-banner">
-                <div className="banner-close">
-                  <button>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11 1L1 11M1 1L11 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </button>
+               {isVisible && (
+                <div className="top-banner">
+                  <div className="banner-close">
+                    <button onClick={() => setIsVisible(false)}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 1L1 11M1 1L11 11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="banner-text">
+                    <h4>Upcoming Training: Cloud Security Best Practices - <span> 25th Sep, 11 AM IST</span></h4>
+                  </div>
                 </div>
-                <div className="banner-text">
-                  <h4>Upcoming Training: Cloud Security Best Practices - <span> 25th Sep, 11 AM IST</span></h4>
-                </div>
-              </div>
+              )}
               <div className="dashboard-main">
                 <div className="inner-grid">
                   <div className="left-wrapper">
@@ -204,8 +209,11 @@ const Login = () => {
                                   }}
                                   className="myswiper"
                                     breakpoints={{
+                                    1440:{
+                                      slidesPerView:1.6
+                                    },
                                     1366:{
-                                      slidesPerView: 1.6,
+                                      slidesPerView: 1.4,
                                     },
                                     1200:{
                                       slidesPerView: 1.3,
@@ -374,8 +382,11 @@ const Login = () => {
                                   }}
                                   className="myswiper"
                                   breakpoints={{
+                                    1440:{
+                                      slidesPerView:1.6
+                                    },
                                      1366:{
-                                      slidesPerView: 1.8,
+                                      slidesPerView: 1.4,
                                     }, 
                                     1200:{
                                       slidesPerView: 1.3,

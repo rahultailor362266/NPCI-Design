@@ -3,6 +3,7 @@
     align-items: center;
     gap: 16px;
     position: relative;
+    flex-wrap: wrap;
 }
 .course-img img {
     object-fit: cover;

@@ -118,7 +118,7 @@
     }
    .main-wrapper .sidebar{
         top: 55px;
-        min-height: calc(100vh - 55px);
+        min-height: calc(100dvh - 55px);
     }
     body .sidebar-list {
         padding: 10px 5px;

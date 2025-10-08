@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
+
 const Sidebar = () => {
 
 const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -29,6 +31,21 @@ const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
             Simple tooltip
         </Tooltip>
     );
+    const SubMenu = ({ children, position }: any) =>
+  createPortal(
+    <div
+      className="sub-menu"
+      style={{
+        position: "absolute",
+        top: position.top,
+        left: position.left,
+        zIndex: 9999,
+      }}
+    >
+      {children}
+    </div>,
+    document.body
+  );
     return (
         <>
             <div className="sidebar">
@@ -82,7 +99,7 @@ const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
                                 show={hoveredIndex === index} 
                                 delay={{ show: 0, hide: 100 }}
                             >
-                                <div
+                                <li
                                     className={`list-item ${activeIndex === index ? "list-item-active" : ""}`}
                                     onClick={() => handleItemClick(index)}
                                     onMouseEnter={(e) => {
@@ -116,7 +133,7 @@ const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
                                             </Link>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
                             </OverlayTrigger>
                         ))}
 
