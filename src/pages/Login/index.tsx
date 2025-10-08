@@ -110,7 +110,7 @@ const Login = () => {
                               <path d="M11.6667 12.2166V14.1666C11.6667 14.6249 12.0583 14.9832 12.475 15.1749C13.4583 15.6249 14.1667 16.8666 14.1667 18.3332" stroke="var(--Gray-800)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                               <path d="M15 1.66675H5V7.50008C5 8.82616 5.52678 10.0979 6.46447 11.0356C7.40215 11.9733 8.67392 12.5001 10 12.5001C11.3261 12.5001 12.5979 11.9733 13.5355 11.0356C14.4732 10.0979 15 8.82616 15 7.50008V1.66675Z" stroke="var(--Gray-800)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            Knowledge expositing
+                            Knowledge repository
                           </Link>
                           <Link to={''}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

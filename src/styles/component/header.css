@@ -37,10 +37,34 @@
     color: transparent;
 }
 .quoted-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     background: var(--Gray-50);
     padding: 14px 18px;
     border: 1px solid var(--Gray-200);
     border-radius: 14px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: width 0.4s ease-in-out;
+    max-width: 380px;
+    overflow: hidden;
+}
+
+.blink-span {
+    display: inline-block;
+    transition: opacity 0.4s ease-in-out;
+    opacity: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    /* hide overflow text */
+    text-overflow: ellipsis;
+    /* add triple dots */
+    max-width: calc(380px - 20px - 12px - 36px);
+}
+
+.blink-span.hidden {
+    opacity: 0;
 }
 .quoted-text p {
     display: flex;

@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import logoIc from '../assets/logo-ic.svg'
 import Avtar from '../assets/avtar.png'
 
 const header = () => {
    const [theme, setTheme] = useState<"light" | "dark">("light");
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
+
+   const messages = [
+      "Complete 3 challenges today to unlock a new badge Complete 3 challenges today to unlock a new badge Complete 3 challenges today to unlock a new badge!",
+      "New badge available for top scorers!",
+      "Don't forget to check your progress!"
+   ];
    useEffect(() => {
       const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
       if (savedTheme) {
@@ -21,6 +31,40 @@ const header = () => {
    const toggleTheme = () => {
       setTheme((prev) => (prev === "light" ? "dark" : "light"));
    };
+  const svgWidth = 20;
+  const gap = 12;
+  const paddingHorizontal = 18 * 2;
+  const buffer = 2;
+
+  const updateWidth = () => {
+    if (textRef.current) {
+      // Measure actual width including external CSS
+      const textWidth = textRef.current.getBoundingClientRect().width;
+      setContainerWidth(textWidth + svgWidth + gap + paddingHorizontal + buffer);
+    }
+  };
+
+  // Initial width calculation after first paint
+  useEffect(() => {
+    requestAnimationFrame(() => updateWidth());
+  }, []);
+
+  // Update width whenever message changes
+  useEffect(() => {
+    requestAnimationFrame(() => updateWidth());
+  }, [currentIndex]);
+
+  // Cycle messages with fade transition
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % messages.length);
+        setIsVisible(true);
+      }, 400); // match fade duration
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
    return (
       <>
          <header className='header'>
@@ -34,7 +78,10 @@ const header = () => {
                   <div className="user-name">
                      <h4>Good morning, <span>John</span></h4>
                   </div>
-                  <div className="quoted-text">
+                  <div
+                     className="quoted-text"
+                     style={{ width: `${containerWidth}px` }}
+                  >
                      <p>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M7.34467 1.87581C7.37324 1.72287 7.45439 1.58475 7.57407 1.48535C7.69375 1.38595 7.84443 1.33154 8 1.33154C8.15558 1.33154 8.30626 1.38595 8.42594 1.48535C8.54562 1.58475 8.62677 1.72287 8.65534 1.87581L9.356 5.58114C9.40577 5.84457 9.53379 6.08688 9.72336 6.27645C9.91293 6.46602 10.1552 6.59404 10.4187 6.64381L14.124 7.34447C14.2769 7.37304 14.4151 7.45419 14.5145 7.57387C14.6139 7.69355 14.6683 7.84423 14.6683 7.99981C14.6683 8.15538 14.6139 8.30606 14.5145 8.42574C14.4151 8.54542 14.2769 8.62657 14.124 8.65514L10.4187 9.35581C10.1552 9.40557 9.91293 9.53359 9.72336 9.72316C9.53379 9.91273 9.40577 10.155 9.356 10.4185L8.65534 14.1238C8.62677 14.2767 8.54562 14.4149 8.42594 14.5143C8.30626 14.6137 8.15558 14.6681 8 14.6681C7.84443 14.6681 7.69375 14.6137 7.57407 14.5143C7.45439 14.4149 7.37324 14.2767 7.34467 14.1238L6.644 10.4185C6.59424 10.155 6.46622 9.91273 6.27665 9.72316C6.08708 9.53359 5.84477 9.40557 5.58134 9.35581L1.876 8.65514C1.72307 8.62657 1.58495 8.54542 1.48555 8.42574C1.38615 8.30606 1.33174 8.15538 1.33174 7.99981C1.33174 7.84423 1.38615 7.69355 1.48555 7.57387C1.58495 7.45419 1.72307 7.37304 1.876 7.34447L5.58134 6.64381C5.84477 6.59404 6.08708 6.46602 6.27665 6.27645C6.46622 6.08688 6.59424 5.84457 6.644 5.58114L7.34467 1.87581Z" stroke="url(#paint0_linear_203_15764)" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
@@ -60,7 +107,12 @@ const header = () => {
                               </linearGradient>
                            </defs>
                         </svg>
-                        Complete 3 challenges today to unlock a new badge!
+                        <span
+                           ref={textRef}
+                           className={`blink-span ${isVisible ? "visible" : "hidden"}`}
+                        >
+                          {messages[currentIndex]}
+                        </span>
                      </p>
                   </div>
                </div>
