@@ -1,7 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import Author from '../assets/author.png'
 import TrainingCourse from '../assets/training-course.png'
-import Progressbar from './Progressbar'
+// import Progressbar from './Progressbar'
 const CourseCard = () => {
     return (
         <>

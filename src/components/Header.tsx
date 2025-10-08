@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logoIc from '../assets/logo-ic.svg'
 import Avtar from '../assets/avtar.png'
 
