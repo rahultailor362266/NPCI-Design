@@ -1,0 +1,69 @@
+/* all button css  */
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+    border-color: transparent;
+}
+.btn-global{
+    padding: 6px 14px;
+    box-shadow: 0px 1px 2px 0px #1018280D;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.btn-global:disabled{
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+body .btn-primary{
+    background: var(--btn-gradient);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 12px;
+    background-size: 100% 100%;
+    transition: background-size 0.5s ease, transform 0.3s ease;
+    border: none;
+}
+.btn{
+    padding: 0;
+}
+.btn-primary:hover{
+    background-size: 160% 100%;
+}
+.btn-outline{
+    padding: 4px 12px;
+    background: var(--background-white);
+    border: 1px solid var(--Gray-300);
+    font-weight: 500;
+    color: var(--Gray-700);
+    text-decoration: none;
+    line-height: 18px;
+}
+.btn-h36{   
+    padding: 8px 14px;
+    height: 36px;
+}
+.btn-h40{   
+    padding: 10px 16px;
+    height: 40px;
+}
+.btn-h44{
+     padding: 12px 18px;
+     height: 44px;
+}
+.btn-h48{
+     padding: 12px 20px;
+     font-size: 16px;
+     line-height: 24px;
+     height: 48px;
+}
+.btn-h60{
+     padding: 16px 28px;
+     font-size: 18px;
+     line-height: 28px;
+     height: 60px;
+}

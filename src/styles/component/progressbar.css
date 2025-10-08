@@ -1,0 +1,21 @@
+.progressbar-main {
+    margin-top: 20px;
+}
+
+.progressbar-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+.progressbar-title span{
+    color: var(--Gray-800);
+}
+.progressbar-main .progress {
+    height: 6px;
+    background: var(--Gray-200);
+    border-radius: 16px;
+}
+.progressbar-main .progress .progress-bar{
+    background-color: var(--success-500);
+}

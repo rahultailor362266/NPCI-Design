@@ -1,0 +1,92 @@
+.sidebar {
+    top: 72px;
+    min-height: calc(100vh - 73px);
+    border-right: 1px solid var(--Gray-200);
+    background: var(--background-white);
+    position: fixed;
+    z-index: 22;
+}
+.sidebar-list ul {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 12px;
+}
+.sidebar-list ul .list-item {
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+.sidebar-list ul .list-item:hover{
+    background: var(--Gray-100);
+}
+.sidebar-list ul .list-item svg {
+    min-height: 22px;
+}
+.sidebar-list ul .list-item.list-item-active{
+    background: var(--btn-gradient);
+}
+.sidebar-list ul .list-item.list-item-active > button > svg path {
+    stroke: var(--white);
+}
+.sidebar-list {
+    padding: 16px 7px;
+}
+.sub-menu {
+    position: absolute;
+    left: 51px;
+    top: 0;
+    transform: translateX(-10px);
+    padding: 12px;
+    background: var(--background-white);
+    border: 1px solid var(--Gray-200);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    width: 224px;
+    cursor: auto;
+}
+.sub-menu .submenu-list {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 8px;
+}
+.list-item.list-item-active .sub-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);  
+}
+.sub-menu .submenu-list a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: transparent;
+}
+.sub-menu .submenu-list a svg path , .sub-menu .submenu-list a{
+    transition: all 0.3s ease-in-out;
+}
+ .sub-menu .submenu-list a.submenu-list-active{
+    background: var(--btn-gradient);
+    color: var(--white);
+}
+.sub-menu .submenu-list a.submenu-list-active svg path{
+    stroke: var(--white);
+}
+.sub-menu .submenu-list a:hover:not(.submenu-list-active){
+    background: var(--Gray-50);
+}
+.sub-menu .submenu-list a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--Gray-700);
+}

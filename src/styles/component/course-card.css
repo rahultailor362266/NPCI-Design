@@ -1,0 +1,78 @@
+.course-card-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+}
+.course-img img {
+    object-fit: cover;
+    border-radius: 14px;
+    width: 80px;
+    height: 64px;
+    min-width: 80px;
+}
+.course-content .course-name p {
+    max-width: calc(100% - 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.course-content {
+    flex: 1;
+}
+.has-label .course-name {
+    max-width: calc(100% - 90px);
+}
+.course-content .author-name {
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.course-content .author-name span{
+    color: var(--Gray-600);
+}
+.date-wrapper , .course-content .author-name , .course-time , .date-wrapper p , .rating-wrapper p {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.date-wrapper p , .rating-wrapper p{
+    gap: 6px;
+    color: var(--Gray-600);
+}
+.rating-wrapper p{
+    color: var(--Gray-800);
+    font-weight: 500;
+}
+.date-wrapper span{
+    color: var(--Gray-800);
+}
+.date-wrapper {
+    gap: 4px;
+}
+.course-time {
+    gap: 10px;
+}
+.course-status{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.course-btn {
+    margin-top: 16px;
+}
+.course-btn button {
+    width: 100%;
+}
+
+.course-status .close-course {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+@media(max-width:767px){
+    .course-card-main{
+        flex-flow: column wrap;
+        align-items: flex-start;
+    }
+}
